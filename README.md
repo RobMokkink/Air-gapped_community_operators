@@ -1,1 +1,1 @@
-# community-operarators-sycs
+# OKD-Openshift-community-operators-sync
