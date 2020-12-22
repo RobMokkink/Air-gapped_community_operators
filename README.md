@@ -49,7 +49,7 @@ The script will do the following steps:
 Go to the directory where you put the repository https://github.com/operator-framework/community-operators and build the operator catalog image.
 Build the catalogindex image with docker file ```upstream.Dockerfile```
 ```
-sudo buildah bud -f upstream.Dockerfile -t lab-ops
+buildah bud -f upstream.Dockerfile -t lab-ops
 ```
 
 After that, tag and push the image.
