@@ -47,9 +47,9 @@ The script will do the following steps:
 
 ### Build the image
 Go to the directory where you put the repository https://github.com/operator-framework/community-operators and build the operator catalog image.
-The image needs to be build as root! (this needs some work)
+Build the catalogindex image with docker file ```upstream.Dockerfile```
 ```
-sudo buildah bud -f openshift.Dockerfile -t lab-ops
+sudo buildah bud -f upstream.Dockerfile -t lab-ops
 ```
 
 After that, tag and push the image.
@@ -74,7 +74,7 @@ spec:
       interval: 30m
 ```
 
-This will create the catalogpod inside project ```openshift-marketplace```
+This will create the catalog pod inside project ```openshift-marketplace```
 
 
 ### Use the new catalog
