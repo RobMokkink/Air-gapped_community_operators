@@ -79,8 +79,10 @@ spec:
   publisher: Mokkinksystems
   updateStrategy:
     registryPoll: 
-      interval: 30m
+      interval: 20m
 ```
+
+** The interval must be in multiple of 10 minutes, because of a bug in openshift/OKD **
 
 This will create the catalog pod inside project ```openshift-marketplace```
 
