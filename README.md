@@ -1,8 +1,16 @@
 # OKD-Openshift-community-operators-sync
-I created this script out of pure frustration with the lack of support for syncing community operators in OKD/Openshift in a disconnected environment.
+I created this script for syncing community operators in OKD/Openshift in a disconnected environment.
 A lot of operators do not have shasums, which means the imagecontentsourcepolicy's will not work.
-
 Disclaimer: the script needs work and i am not responsible when you use it.
+
+
+# Tested Community Operators
+The following list of operators are tested with this script
+
+```
+- strimzi-kafka-operator
+- dell-csi-operator
+```
 
 ## Requirements
 - registry that supports nested repositories, i recommend Harbor
