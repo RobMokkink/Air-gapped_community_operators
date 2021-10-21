@@ -1,8 +1,7 @@
 # OKD-Openshift-community-operators-sync
 I created this script for syncing community operators in OKD/Openshift in a disconnected environment.
 A lot of operators do not have shasums, which means the imagecontentsourcepolicy's will not work.
-Disclaimer: the script needs work and i am not responsible when you use it.
-
+Disclaimer: the code and procedure is provided as is, you may need to change it to suit your needs.
 
 # Tested Community Operators
 The following list of operators are tested with this script
@@ -14,11 +13,11 @@ The following list of operators are tested with this script
 
 ## Requirements
 - registry that supports nested repositories, i recommend Harbor
-- registry credentials to push or pull
+- registry credentials to push or pull (robot)
 
 ### Clone community operators repo
-Clone the repo https://github.com/operator-framework/community-operators.
-Got inside the directory ```upstream-community-operators```, you will see a lot of operators, remove the folders for operators you do not want.
+Clone the repo https://github.com/k8s-operatorhub/community-operators
+Got inside the directory ```operators```, you will see a lot of operators, remove the folders for operators you do not want.
 A example in which i only keep ```strimzi``` and ```grafana``` operators:
 ```
 ls | egrep -v '(strimzi|grafana)' | xargs rm -rf -
@@ -42,7 +41,7 @@ optional arguments:
 
 Example run:
 ```
-./sync-images.py --dir ~/gitrepos/community-operators/upstream-community-operators --authfile auth.json --registry harbor.lab.local/olm --dumpjson
+./sync-images.py --dir ~/gitrepos/community-operators/operators --authfile auth.json --registry harbor.lab.local/olm --dumpjson
 ```
 
 #### What will the script do?
@@ -55,7 +54,7 @@ The script will do the following steps:
 
 ### Build the image
 Go to the directory where you put the repository https://github.com/operator-framework/community-operators and build the operator catalog image.
-Build the catalogindex image with docker file ```upstream.Dockerfile```
+Build the catalogindex image with docker file ```upstream.Dockerfile```, this one is broken, see my adjustement in the code.
 ```
 buildah bud -f upstream.Dockerfile -t lab-ops
 ```
@@ -90,5 +89,6 @@ This will create the catalog pod inside project ```openshift-marketplace```
 ### Use the new catalog
 You can see in the webui the new catalog source and deploy operators.
 When you deploy operators you will see that images are pulled from you local registry.
+Disclaimer: Not all operators have proper clusterserviceversion files, you may need adjust some, or better, participate in the upstream project to create better operators.
 
 Have fun!
