@@ -1,4 +1,4 @@
-# OKD-Openshift-community-operators-sync
+# Air-gapped_community_operators
 I created this script for syncing community operators in OKD/Openshift in a disconnected environment.
 A lot of operators do not have shasums, which means the imagecontentsourcepolicy's will not work.
 Disclaimer: the code and procedure is provided as is, you may need to change it to suit your needs.
